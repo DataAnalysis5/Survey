@@ -10,7 +10,7 @@ import fs from "fs"
 import { sendVerificationEmail } from "./utils/emailService.js"
 import nodemailer from "nodemailer"
 
-// Get current file path in ESM
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
@@ -19,10 +19,10 @@ if (!fs.existsSync(tempDir)) {
   fs.mkdirSync(tempDir, { recursive: true })
 }
 
-// Load environment variables
+
 dotenv.config()
 
-// Import models with .js extension
+
 import User from "./server/models/user.model.js"
 import Survey from "./server/models/survey.model.js"
 import Response from "./server/models/response.model.js"
@@ -67,8 +67,8 @@ mongoose
   })
   .catch((err) => console.error("MongoDB connection error:", err))
 
-// Add after your imports and before routes
-// Update the generateCSV function to handle star ratings
+
+
 async function generateCSV(csvPath) {
   try {
     const responses = await Response.find()
@@ -134,8 +134,7 @@ async function generateCSV(csvPath) {
   }
 }
 
-// Auth Routes
-// Generate OTP function
+
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString()
 }
@@ -149,7 +148,7 @@ app.post("/api/signup", async (req, res) => {
       return res.status(400).json({ error: "Invalid username" })
     }
 
-    // Check if email already exists
+
     const existingEmail = await User.findOne({ email })
     if (existingEmail) {
       return res.status(400).json({ error: "Email already registered" })
@@ -172,7 +171,7 @@ app.post("/api/signup", async (req, res) => {
 
     await user.save()
 
-    // Send verification email
+
     await sendVerificationEmail(email, otp)
 
     res.json({
@@ -184,7 +183,7 @@ app.post("/api/signup", async (req, res) => {
   }
 })
 
-// Modify the existing login route
+
 app.post("/api/login", async (req, res) => {
   try {
     const { username, password } = req.body
@@ -200,9 +199,7 @@ app.post("/api/login", async (req, res) => {
       })
     }
 
-    // Replace this line:
-    // const validPassword = await bcrypt.hash(password, user.password)
-    // With this correct comparison:
+
     const validPassword = await bcrypt.compare(password, user.password)
 
     if (!validPassword) {
@@ -222,7 +219,7 @@ app.post("/api/login", async (req, res) => {
   }
 })
 
-// Add email verification endpoint
+
 app.post("/api/verify-email", async (req, res) => {
   try {
     const { email, otp } = req.body
@@ -253,7 +250,7 @@ app.post("/api/verify-email", async (req, res) => {
   }
 })
 
-// Add the new departments endpoint here
+
 app.get("/api/departments", async (req, res) => {
   try {
     // Fetch unique departments from your database using mongoose
@@ -264,8 +261,7 @@ app.get("/api/departments", async (req, res) => {
   }
 })
 
-// Survey Routes
-// Update the POST /api/surveys route to validate star rating questions
+
 app.post("/api/surveys", async (req, res) => {
   try {
     const surveyData = req.body
@@ -324,19 +320,19 @@ app.get("/api/surveys/:department", async (req, res) => {
   }
 })
 
-// Add this with your other survey routes
+
 app.delete("/api/surveys/:id", async (req, res) => {
   try {
     const surveyId = req.params.id
 
-    // Delete the survey
+
     const deletedSurvey = await Survey.findByIdAndDelete(surveyId)
 
     if (!deletedSurvey) {
       return res.status(404).json({ error: "Survey not found" })
     }
 
-    // Delete associated responses
+
     await Response.deleteMany({ surveyId: surveyId })
 
     res.json({ success: true, message: "Survey deleted successfully" })
@@ -346,7 +342,7 @@ app.delete("/api/surveys/:id", async (req, res) => {
   }
 })
 
-// Response Routes
+
 app.post("/api/responses", async (req, res) => {
   try {
     const response = new Response(req.body)
@@ -390,7 +386,7 @@ app.get("/api/responses/export", async (req, res) => {
         }),
       }
 
-      // Add each question and its corresponding answer
+
       if (response.surveyId?.questions) {
         response.surveyId.questions.forEach((question, index) => {
           const questionKey = `Question ${index + 1}`
@@ -429,7 +425,7 @@ app.get("/api/responses/export", async (req, res) => {
   }
 })
 
-// Error handling middleware
+
 app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(500).json({ error: "Something went wrong!" })
@@ -440,19 +436,16 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
 
-// Remove this line
-// const ReportGenerator = require('./reportGenerator');
 
-// Add this new route
 app.get("/api/responses/analysis", async (req, res) => {
   try {
-    // Create temporary CSV file path
+
     const csvPath = path.join(tempDir, `responses_${Date.now()}.csv`)
 
-    // Generate CSV first
+
     await generateCSV(csvPath)
 
-    // Initialize report generator with CSV path
+
     const generator = new ReportGenerator(csvPath)
     await generator.initialize()
 
@@ -472,7 +465,7 @@ app.get("/api/responses/analysis", async (req, res) => {
         return res.status(500).json({ error: "Failed to download analysis" })
       }
 
-      // Clean up temporary files after sending
+
       fs.unlink(pdfPath, (unlinkErr) => {
         if (unlinkErr) console.error("Error deleting PDF:", unlinkErr)
       })
@@ -486,7 +479,7 @@ app.get("/api/responses/analysis", async (req, res) => {
   }
 })
 
-// Add these helper functions
+
 async function sendPasswordResetEmail(email, resetCode) {
   try {
     const transporter = nodemailer.createTransport({
@@ -499,7 +492,7 @@ async function sendPasswordResetEmail(email, resetCode) {
         pass: process.env.EMAIL_PASSWORD,
       },
       tls: {
-        // Do not fail on invalid certificates
+
         rejectUnauthorized: false,
       },
     })
@@ -526,7 +519,7 @@ async function sendPasswordResetEmail(email, resetCode) {
   }
 }
 
-// Add this endpoint for requesting password reset
+
 app.post("/api/request-password-reset", async (req, res) => {
   try {
     const { email } = req.body
@@ -555,7 +548,7 @@ app.post("/api/request-password-reset", async (req, res) => {
   }
 })
 
-// Add this endpoint for resetting password
+
 app.post("/api/reset-password", async (req, res) => {
   try {
     const { email, resetCode, newPassword } = req.body
@@ -589,20 +582,19 @@ app.post("/api/reset-password", async (req, res) => {
   }
 })
 
-// Add this new endpoint for session verification
+
 app.get("/api/verify-session", async (req, res) => {
   try {
-    // This is a simple endpoint that just returns success
-    // In a real application, you would verify the session token here
+
     res.json({ success: true })
   } catch (error) {
     res.status(401).json({ error: "Invalid session" })
   }
 })
 
-// Add this new endpoint for logout
+
 app.post("/api/logout", (req, res) => {
-  // In a real application with server-side sessions, you would invalidate the session here
+
   res.json({ success: true })
 })
 
