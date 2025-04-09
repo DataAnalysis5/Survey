@@ -1,0 +1,988 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hidden {
+    display: none;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+h3 {
+    margin: 1rem 0;
+    color: #34495e;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input, select, button {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #253074;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #253074;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    color: #0056b3;
+}
+
+.form-footer {
+    margin-top: 15px;
+    text-align: center;
+    color: #333;
+}
+
+.signup-form .form-footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #333;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.signup-form .form-footer .link-button {
+    background: none;
+    border: none;
+    color: #253074;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0 5px;
+    font: inherit;
+    display: inline;
+}
+
+.signup-form .form-footer .link-button:hover {
+    color: #1a2456;
+}
+
+.admin-controls {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.question-input {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.options-container {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
+}
+
+.options-container.hidden {
+    display: none;
+}
+
+.option-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 10px;
+    width: 100%;
+}
+
+.options-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 0;  /* Allows input to shrink below its content size */
+}
+
+.options-help {
+    display: block;
+    color: #666;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+
+.survey-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;  /* Add this */
+    overflow: visible;   /* Add this */
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.survey-response {
+    margin: 1rem 0;
+}
+
+.response-input {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.radio-options, .checkbox-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.department-section {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.department-section h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+
+
+.survey-feed{
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex
+;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5* var (--bs-gutter-x));
+    margin-left: calc(-.5* var(--bs-gutter-x));
+}
+
+element.style {
+}
+
+nav.navbar {
+    background: #222C70;
+    padding: 15px 16px !important;
+    z-index: 1;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.navbar {
+    --bs-navbar-padding-x: 0;
+    --bs-navbar-padding-y: 0.5rem;
+    --bs-navbar-color: rgba(0, 0, 0, 0.55);
+    --bs-navbar-hover-color: rgba(0, 0, 0, 0.7);
+    --bs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
+    --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
+    --bs-navbar-brand-padding-y: 0.3125rem;
+    --bs-navbar-brand-margin-end: 1rem;
+    --bs-navbar-brand-font-size: 1.25rem;
+    --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
+    --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
+    --bs-navbar-nav-link-padding-x: 0.5rem;
+    --bs-navbar-toggler-padding-y: 0.25rem;
+    --bs-navbar-toggler-padding-x: 0.75rem;
+    --bs-navbar-toggler-font-size: 1.25rem;
+    --bs-navbar-toggler-icon-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
+    --bs-navbar-toggler-border-color: rgba(0, 0, 0, 0.1);
+    --bs-navbar-toggler-border-radius: 0.375rem;
+    --bs-navbar-toggler-focus-width: 0.25rem;
+    --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
+    position: relative;
+    display: flex
+;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+nav {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x)* .5);
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    margin-right: auto;
+    margin-left: auto;
+}
+body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-black: #000;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #0d6efd;
+    --bs-secondary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-primary-rgb: 13, 110, 253;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-success-rgb: 25, 135, 84;
+    --bs-info-rgb: 13, 202, 240;
+    --bs-warning-rgb: 255, 193, 7;
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #212529;
+    --bs-body-bg: #fff;
+    --bs-border-width: 1px;
+    --bs-border-style: solid;
+    --bs-border-color: #dee2e6;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-2xl: 2rem;
+    --bs-border-radius-pill: 50rem;
+    --bs-link-color: #0d6efd;
+    --bs-link-hover-color: #0a58ca;
+    --bs-code-color: #d63384;
+    --bs-highlight-bg: #fff3cd;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+::selection {
+    color: #fff;
+    background: #007bff;
+}
+
+
+/* Add these media queries at the end of your styles.css file */
+
+@media screen and (max-width: 768px) {
+    .container {
+      margin: 1rem;
+      padding: 1rem;
+      width: auto;
+    }
+  
+    .question-input {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  
+    .login-form, .signup-form {
+      width: 100%;
+      padding: 0 1rem;
+    }
+  
+    input, select, button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  
+    .survey-card {
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+    }
+  
+    .radio-options, .checkbox-options {
+      padding-left: 0.5rem;
+    }
+  
+    .admin-controls {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+    }
+  
+    .department-section {
+      margin: 1rem 0;
+      padding: 0.75rem;
+    }
+
+    .action-button[onclick="logout()"] {
+        padding: 6px 12px;
+        font-size: 14px;
+        margin: 5px 0;
+        top: 15px;      /* Add this */
+        right: 15px;    /* Add this */
+    }
+
+    .navbar {
+        flex-wrap: nowrap;
+    }
+
+    .container-fluid {
+        padding: 0 10px;
+        position: relative;
+        min-height: 60px;
+    }
+
+    .add-option-btn, .remove-option-btn {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    .option-input-group {
+        gap: 5px;
+    }
+
+    .survey-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .survey-actions .action-button {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .survey-actions .action-button:last-child {
+        margin-bottom: 0;
+    }
+
+    .password-toggle {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        transform: none; /* Prevent any unwanted scaling */
+    }
+    
+    .password-toggle i {
+        font-size: 16px; /* Keep icon size consistent */
+    }
+  }
+  
+  /* For very small screens */
+  @media screen and (max-width: 480px) {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    h3 {
+      font-size: 1.2rem;
+    }
+  
+    .options-container {
+      padding: 0.5rem;
+    }
+  
+    .form-footer {
+      font-size: 0.9rem;
+    }
+  }
+
+
+/* .logo {
+    height: auto;
+    width: auto;
+    
+} */
+.row {
+    width: 180px;
+    max-height: 150px;
+    
+
+}
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-height: 110px;
+} 
+
+.success-message {
+    text-align: center;
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-radius: 4px;
+    margin: 20px 0;
+    position: relative;  /* Add this */
+    z-index: 1000;      /* Add this */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Add this */
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    padding: 20px;
+    margin: 15px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.success-message h4 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+    font-weight: bold;  /* Add this */
+    margin: 0 0 10px 0;
+    color: #155724;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.success-message p {
+    color: #1b5e20;
+    margin: 0;         /* Add this */
+    margin: 0;
+    color: #155724;
+}
+
+.success-message i {
+    color: #28a745;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.survey-form {
+    position: relative;
+    padding: 20px;
+}
+
+.action-button {
+    margin-right: 15px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+.action-button:last-child {
+    margin-right: 0;
+}
+
+/* Style for logout button */
+.action-button[onclick="logout()"] {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    max-width: fit-content;
+    min-width: auto;
+    position: absolute;  /* Change from fixed to absolute */
+    top: 25px;       /* Adjust top position */
+    right: 25px;     /* Adjust right position */
+    z-index: 100;   /* Add z-index to ensure button stays on top */
+}
+
+/* Add hover effect */
+.action-button[onclick="logout()"]:hover {
+    background-color: #c82333;
+}
+
+/* Container for other action buttons */
+.survey-actions {
+    display: inline-flex;
+    gap: 120px;  /* Increases horizontal spacing between buttons */
+    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.survey-actions .action-button {
+    flex: 0 0 auto;
+    padding: 10px 12px;  /* Increased padding */
+    margin-bottom: 10px;
+    margin-right: 20px;
+    font-size: 16px;     /* Increased font size */
+    min-width: 160px;    /* Minimum width */
+    text-align: center;
+    font-weight: 500;    /* Slightly bolder text */
+    border-radius: 6px;  /* Slightly more rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.survey-actions .action-button:hover {
+    transform: translateY(-1px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.survey-actions .action-button:last-child {
+    margin-right: 0;
+}
+
+.surveys-list h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #2c3e50;
+    margin: 30px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.surveys-list {
+    margin-top: 40px;
+    text-align: center;
+}
+
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.delete-btn:hover {
+    opacity: 0.7;
+}
+
+.options-container {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.option-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 10px;
+    width: 100%;
+}
+
+.options-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 0;  /* Allows input to shrink below its content size */
+}
+
+.add-option-btn, .remove-option-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 40px;
+    max-width: fit-content;
+    white-space: nowrap;
+    flex-shrink: 0;  /* Prevents button from shrinking */
+}
+
+.add-option-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.remove-option-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.options-help {
+    display: block;
+    color: #666;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+
+.all-departments-option {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.all-departments-option label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.all-departments-option input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.star-option {
+    display: flex;
+    align-items: center;
+}
+
+.star-option label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.star-option input[type="radio"] {
+    margin-right: 10px;
+}
+
+.star-label {
+    color: gold;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+/* Change color when selected */
+.star-option input[type="radio"]:checked + .star-label {
+    color: #FFD700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Add these styles for password visibility toggle */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px; /* Prevent shrinking */
+    min-height: 30px; /* Prevent shrinking */
+}
+
+.password-toggle:hover {
+    color: #333;
+}
+
+.password-toggle:focus {
+    outline: none;
+}
+
+.password-toggle i {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Add these styles for the department dropdown */
+select#new-department {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+}
+
+select#new-department option {
+    padding: 5px;
+    background-color: white;
+    color: #333;
+}
+
+.form-footer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+    width: 100%;
+    visibility: visible !important;
+}
+
+.form-footer-wrapper span {
+    color: #666;
+    display: inline-block;
+}
+
+.form-footer-wrapper .link-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.form-footer-wrapper .link-button:hover {
+    color: #0056b3;
+}
+
+.signup-button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Add these specific styles for the form footer in signup form */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-footer-wrapper {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+    width: 100%;
+    visibility: visible !important;
+    z-index: 1;
+    position: relative;
+}
+
+.form-footer-wrapper span {
+    color: #666;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+.form-footer-wrapper .link-button {
+    background: none;
+    border: none;
+    color: #253074;
+    padding: 0 5px;
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+.form-footer-wrapper .link-button:hover {
+    color: #1a2456;
+}
+
+/* Ensure the signup container doesn't hide content */
+#signup-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Remove any conflicting hidden class styles */
+#signup-container.hidden {
+    display: none;
+}
+
+.verification-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#otp-input {
+    font-size: 24px;
+    letter-spacing: 8px;
+    text-align: center;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.verification-form p {
+    color: #666;
+    margin: 10px 0;
+}
+
+.form-container {
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.forgot-password-form,
+.reset-verification-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.forgot-password-form input,
+.reset-verification-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.forgot-password-form button,
+.reset-verification-form button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.forgot-password-form button:hover,
+.reset-verification-form button:hover {
+    background-color: #0056b3;
+}
+
+.forgot-password-form button.link-button,
+.reset-verification-form button.link-button {
+    background: none;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.forgot-password-form button.link-button:hover,
+.reset-verification-form button.link-button:hover {
+    color: #0056b3;
+}
